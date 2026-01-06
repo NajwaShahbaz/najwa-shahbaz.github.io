@@ -4,7 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Najwa Shahbaz | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Internal CSS -->
+  <style>
+    /* Reset / Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #000000; /* Primary text */
+      background-color: #ffffff;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    /* Header / Hero */
+    .hero {
+      background: #022049; /* Dark Blue */
+      color: #ffffff;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffae13; /* Highlight */
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
+
+    .btn {
+      background: #ffae13;
+      color: #022049;
+      padding: 0.7rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffffff;
+      color: #022049;
+      border: 2px solid #ffae13;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #022049;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    /* Skills */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .skills-list li {
+      background: #ffae13;
+      color: #022049;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+      border: 2px solid #022049;
+      border-radius: 10px;
+      background: #ffffff;
+      transition: 0.3s;
+    }
+
+    .project-card h3 {
+      color: #ffae13;
+    }
+
+    .project-card p {
+      color: #000000;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(2, 32, 73, 0.3);
+      border-color: #ffae13;
+    }
+
+    /* Contact */
+    #contact a {
+      color: #ffae13;
+      text-decoration: none;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #022049;
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    /* JS Scroll Animations */
+    .hidden { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+    .visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -91,6 +244,24 @@
     <p>&copy; 2026 Najwa Shahbaz. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Internal JS -->
+  <script>
+    // Scroll animation for sections
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => {
+        section.classList.add("hidden");
+        observer.observe(section);
+      });
+    });
+  </script>
 </body>
 </html>
