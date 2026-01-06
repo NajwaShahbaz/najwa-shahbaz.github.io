@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Najwa Shahbaz | Portfolio</title>
-  
-  <!-- Internal CSS -->
   <style>
     /* Reset / Base */
     * {
@@ -17,39 +15,44 @@
 
     body {
       line-height: 1.6;
-      color: #000000; /* Primary text */
+      color: #000000;
       background-color: #ffffff;
     }
 
+    a { text-decoration: none; }
+
     /* Container */
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
       padding: 2rem;
     }
 
-    /* Header / Hero */
+    /* Hero / Header */
+    .hero {
+      background:#022049;
+      color:#ffffff;
+      padding:8rem 0;
+    }
+
     .hero-grid {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-      gap: 2rem;
+      gap:2rem;
     }
 
     .hero-text h1 {
-      font-size: 2.5rem;
+      font-size:3rem;
       color: #ffae13;
       margin-bottom: 1rem;
     }
 
     .hero-text p {
-      font-size: 1.2rem;
-      line-height: 1.6;
+      font-size:1.3rem;
+      max-width:600px;
       margin-bottom: 1.5rem;
-      max-width: 500px;
     }
 
     .btn {
@@ -59,46 +62,33 @@
       color: #022049;
       font-weight: bold;
       border-radius: 50px;
-      text-decoration: none;
-      transition: 0.3s;
+      transition:0.3s;
     }
 
     .btn:hover {
-      background-color: #ffffff;
-      color: #022049;
-      border: 2px solid #ffae13;
+      background-color:#ffffff;
+      color:#022049;
+      border:2px solid #ffae13;
     }
 
     .hero-image .profile-pic {
-      width: 250px;
-      height: 250px;
+      width:250px;
+      height:250px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #ffae13;
+      border:4px solid #ffae13;
     }
 
-    /* Responsive */
-    @media(max-width:768px){
-      .hero-grid {
-        flex-direction: column-reverse;
-        text-align: center;
-      }
-      .hero-image .profile-pic {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 1.5rem;
-      }
-    }
-    /* Sections */
+    /* About Section */
     section {
-      padding: 4rem 0;
+      padding:4rem 0;
     }
 
     h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: #022049;
+      text-align:center;
+      margin-bottom:2rem;
+      font-size:2rem;
+      color:#022049;
     }
 
     ul {
@@ -107,73 +97,98 @@
       margin-top: 1rem;
     }
 
-    /* Skills */
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
+    /* Skills Section */
+    .skills-grid {
+  display: flex;        /* use flex layout */
+  flex-direction: row;  /* row by default */
+  gap: 2rem;            /* space between cards */
+  flex-wrap: wrap;      /* wrap to next line if screen is too small */
+}
+
+
+    .skills-card {
+      background:#f0f4f8;
+      padding:2rem;
+      border-radius:10px;
+      box-shadow: 0 5px 15px rgba(2,32,73,0.1);
+      transition:0.3s;
+      width: 100%;
     }
 
-    .skills-list li {
-      background: #ffae13;
-      color: #022049;
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-weight: bold;
+    .skills-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(2,32,73,0.2);
     }
 
-    /* Projects */
-.projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+    @media (max-width: 768px){
+      .skills-row {
+        flex-direction: column;
+        gap:2rem;
+      }
+    }
+
+    .skills-card h3 {
+      margin-bottom:1rem;
+      color:#022049;
+    }
+
+    .skills-card ul {
+      list-style:none;
+      padding:0;
+    }
+
+    .skills-card ul li {
+      background:#ffae13;
+      color:#022049;
+      margin:0.3rem 0;
+      padding:0.4rem 0.8rem;
+      border-radius:5px;
+      display:inline-block;
+      font-weight:bold;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:2rem;
     }
 
     .project-card {
-      border: 2px solid #022049;
-      border-radius: 10px;
-      padding: 1rem;
-      background: #ffffff;
-      transition: 0.3s;
+      border:2px solid #022049;
+      border-radius:10px;
+      padding:1rem;
+      background:#ffffff;
+      transition:0.3s;
     }
 
     .project-card img.project-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:8px;
+      margin-bottom:1rem;
     }
 
     .project-card h3 a {
-      color: #ffae13;
-      text-decoration: none;
+      color:#ffae13;
     }
 
-    .project-card h3 a:hover {
-      text-decoration: underline;
-    }
-
-    .project-card p {
-      color: #000000;
-      margin: 0.3rem 0;
-    }
+    .project-card h3 a:hover { text-decoration:underline; }
 
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(2, 32, 73, 0.3);
-      border-color: #ffae13;
+      transform:translateY(-5px);
+      box-shadow:0 5px 15px rgba(2,32,73,0.3);
+      border-color:#ffae13;
     }
 
-    /* Contact */
+    /* Contact Section */
     .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:2rem;
+      max-width:900px;
+      margin:auto;
     }
 
     .contact-card {
@@ -182,78 +197,51 @@
       border-radius:10px;
       padding:2rem 1rem;
       text-align:center;
-      transition: 0.3s;
       box-shadow: 0 5px 15px rgba(2,32,73,0.2);
+      transition:0.3s;
     }
 
     .contact-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(2,32,73,0.4);
+      transform:translateY(-5px);
+      box-shadow:0 10px 20px rgba(2,32,73,0.4);
     }
 
-    .contact-icon {
-      font-size:2.5rem;
-      margin-bottom:1rem;
-      color:#ffae13;
-    }
-
-    .contact-card h3 {
-      margin-bottom:0.5rem;
-      font-size:1.2rem;
-      color:#022049;
-    }
-
-    .contact-card p {
-      margin:0;
-      font-size:1rem;
-      word-wrap: break-word;
-    }
-
-    .contact-card a:hover {
-      color:#ffae13;
-      text-decoration:underline;
-    }
+    .contact-icon { font-size:2.5rem; margin-bottom:1rem; color:#ffae13; }
+    .contact-card h3 { margin-bottom:0.5rem; font-size:1.2rem; color:#022049; }
+    .contact-card p { margin:0; font-size:1rem; }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 2rem;
-      background: #022049;
-      color: #ffffff;
-      font-size: 0.9rem;
+      text-align:center;
+      padding:3rem 1rem;
+      background:#022049;
+      color:#ffffff;
+      font-size:0.9rem;
+      margin-top:3rem;
     }
 
-    /* JS Scroll Animations */
-    .hidden { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-    .visible { opacity: 1; transform: translateY(0); }
-
     /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
+    @media(max-width:768px){
+      .hero-grid { flex-direction:column-reverse; text-align:center; }
+      .hero-image .profile-pic { width:200px; height:200px; margin-bottom:1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header / Hero Section -->
-<header class="hero" style="background:#022049; color:#ffffff; padding:6rem 0;">
-  <div class="container hero-grid">
-    
-    <!-- Text Content -->
-    <div class="hero-text">
-      <h1>Hi, I'm Najwa Shahbaz</h1>
-      <p>Web Developer | Home Automation & IoT Developer | Helping Businesses Grow Digitally & Smartly</p>
-      <a href="#projects" class="btn">See My Work</a>
+  <!-- Header / Hero -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Hi, I'm Najwa Shahbaz</h1>
+        <p>Web Developer | Home Automation & IoT Developer | Helping Businesses Grow Digitally & Smartly</p>
+        <a href="#projects" class="btn">See My Work</a>
+      </div>
+      <div class="hero-image">
+        <img src="./images/najwaBGR.png" alt="Najwa Shahbaz" class="profile-pic">
+      </div>
     </div>
-
-    <!-- Profile Image -->
-    <div class="hero-image">
-      <img src="profile.jpg" alt="Najwa Shahbaz" class="profile-pic">
-    </div>
-
-  </div>
+  </header>
 
   <!-- About Section -->
   <section id="about">
@@ -270,201 +258,155 @@
   </section>
 
   <!-- Skills Section -->
- <!-- Skills Section -->
-<section id="skills">
+<!-- Skills Section -->
+<section id="skills" style="background:#f9f9f9; padding:6rem 0;">
   <div class="container">
-    <h2>My Skills</h2>
-    <ul class="skills-list">
-      <li>ESP32 Microcontrollers</li>
-      <li>ESP32 Weather Tracker</li>
-      <li>MIT App</li>
-      <li>Mobile Applications</li>
-      <li>Arduino IDE</li>
-      <li>Distance-Based Smart Car Project | Embedded Systems</li>
-      <li>Home Automation</li>
-      <li>Domain Name System (DNS)</li>
-      <li>Website Development Project – Tijori Finds</li>
-      <li>Web Hosting</li>
-      <li>Responsive Web Design</li>
-      <li>SQL</li>
-      <li>Machine Learning</li>
-      <li>Project Management</li>
-      <li>Low Level Programming</li>
-      <li>Artificial Intelligence (AI)</li>
-      <li>Computer Vision</li>
-      <li>Embedded Systems</li>
-      <li>WordPress</li>
-      <li>DSA</li>
-      <li>Assembly Language</li>
-      <li>Workshops</li>
-      <li>Workshop Instruction</li>
-      <li>Educational Workshops</li>
-      <li>Public Speaking</li>
-      <li>Motivational Speaking</li>
-      <li>Logic Programming</li>
-      <li>Teamwork</li>
-      <li>University Teaching</li>
-      <li>Homework Help</li>
-      <li>Teacher Mentoring</li>
-      <li>Self-employment</li>
-      <li>Self-confidence</li>
-      <li>Self Learning</li>
-      <li>Self-Management</li>
-      <li>Time Management</li>
-      <li>Arduino</li>
-      <li>Sensors</li>
-      <li>Logic Design</li>
-      <li>Motor Control</li>
-      <li>C++</li>
-      <li>C (Programming Language)</li>
-      <li>Java</li>
-      <li>Software Development</li>
-      <li>Web Design</li>
-      <li>Graphic Design</li>
-      <li>Microsoft Office</li>
-      <li>Image Editing</li>
-      <li>Python (Programming Language)</li>
-      <li>Programming</li>
-      <li>Computer Science</li>
-      <li>Web Applications</li>
-      <li>Web Development</li>
-      <li>Social Media</li>
-      <li>Typing</li>
-    </ul>
+    <h2 style="color:#022049; margin-bottom:3rem;">💡 My Skills</h2>
+    
+    <div class="skills-grid">
+      <!-- Embedded & IoT -->
+      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🔧 Embedded & IoT</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">ESP32</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Arduino</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">IoT Sensors</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Home Automation</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Distance-Based Smart Car</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">MIT App</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Mobile Applications</li>
+        </ul>
+      </div>
+
+      <!-- Programming & Software -->
+      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
+        <h3 style="margin-bottom:1rem; color:#022049;">💻 Programming & Software</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">C</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">C++</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Java</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Python</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">AI & ML</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Computer Vision</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">DSA</li>
+        </ul>
+      </div>
+
+      <!-- Web & Design -->
+      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🌐 Web & Design</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">HTML / CSS / JS</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">React / Node.js</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">PHP / MySQL</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">WordPress</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Responsive Design</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Graphic Design</li>
+        </ul>
+      </div>
+
+      <!-- Professional & Personal -->
+      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🌟 Professional & Personal</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Project Management</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Teamwork & Leadership</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Time Management</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Self-learning</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Public Speaking</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Workshop Instruction</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Microsoft Office</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Image Editing</li>
+          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Social Media</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
 
   <!-- Projects Section -->
-<!-- Projects Section -->
-<section id="projects">
-  <div class="container">
-    <h2>Projects</h2>
+  <section id="projects">
+    <div class="container">
+      <h2>💻 Projects</h2>
 
-    <!-- Web Projects -->
-    <h3 style="color:#022049; margin-top:2rem;">💻 Web Projects</h3>
-    <div class="projects-grid">
-
-      <!-- E-Commerce Website -->
-      <div class="project-card">
-        <img src="website.PNG" alt="E-Commerce Website – Tijori Finds" class="project-img">
-        <h3><a href="https://tijorifinds.pk/" target="_blank">E-Commerce Website – Tijori Finds</a></h3>
-        <p>Developed a full-stack online store with PHP, MySQL backend, and responsive frontend.</p>
-        <p><strong>Duration:</strong> Jun 2025 - Jul 2025</p>
-        <p><strong>Skills:</strong> Web Development, PHP, MySQL, HTML, CSS, JavaScript, Responsive Design</p>
+      <h3 style="color:#022049; margin-top:2rem;">🌐 Web Projects</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="/images/website.PNG" alt="E-Commerce Website – Tijori Finds" class="project-img">
+          <h3><a href="https://tijorifinds.pk/" target="_blank">E-Commerce Website – Tijori Finds</a></h3>
+          <p>Full-stack online store with PHP, MySQL backend, responsive frontend.</p>
+          <p><strong>Duration:</strong> Jun 2025 - Jul 2025</p>
+          <p><strong>Skills:</strong> Web Development, PHP, MySQL, HTML, CSS, JavaScript</p>
+        </div>
+        <div class="project-card">
+          <img src="last.png" alt="Computer & Tech Courses – Bahira Town Phase 3" class="project-img">
+          <h3><a href="#" target="_blank">Computer & Tech Courses – Bahira Town Phase 3</a></h3>
+          <p>Hands-on computer and tech courses for kids and professionals in Bahira Town Phase 3.</p>
+          <p><strong>Duration:</strong> Dec 2025 - Present</p>
+          <p><strong>Skills:</strong> Microsoft Office, C++, Java, Python, Arduino, Web Development, Graphic Design, SQL</p>
+        </div>
+        <div class="project-card">
+          <img src="/images/NHD.PNG" alt="Online Institute Website" class="project-img">
+          <h3><a href="#" target="_blank">Online Institute Website</a></h3>
+          <p>Website for online course enrollment, lectures, downloadable notes, attendance tracker, and assessment sheets.</p>
+          <p><strong>Skills:</strong> Web Development, Responsive Design, Database Management, Embedded Systems</p>
+        </div>
       </div>
 
-      <!-- Computer & Tech Courses – Bahira Town Phase 3 -->
-      <div class="project-card">
-        <img src="last.png" alt="Computer & Tech Courses – Bahira Town Phase 3" class="project-img">
-        <h3><a href="#" target="_blank">Computer & Tech Courses – Bahira Town Phase 3</a></h3>
-        <p>Hands-on computer and tech courses for kids and professionals in Bahira Town Phase 3.</p>
-        <p><strong>Duration:</strong> Dec 2025 - Present</p>
-        <p><strong>Skills:</strong> Microsoft Office, C++, Java, Python, Arduino, Web Development, Graphic Design, SQL</p>
+      <h3 style="color:#022049; margin-top:3rem;">🔧 Hardware & Embedded Projects</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="homeAutomation.png" alt="Home Automation System" class="project-img">
+          <h3><a href="#" target="_blank">Home Automation System</a></h3>
+          <p>Control lights, fans, and appliances using IoT and web/mobile interfaces.</p>
+          <p><strong>Skills:</strong> Arduino, ESP32, IoT, Home Automation</p>
+        </div>
+        <div class="project-card">
+          <img src="/images/appPic.jpeg" alt="ESP32 Weather Tracker" class="project-img">
+          <h3><a href="#" target="_blank">ESP32 Weather Tracker</a></h3>
+          <p>ESP32 reads temperature and humidity from DHT11 and sends the data to mobile via Bluetooth.</p>
+          <p><strong>Skills:</strong> ESP32, MIT app, Mobile Applications, Sensors, Arduino IDE, Home Automation</p>
+        </div>
+        <div class="project-card">
+          <img src="/images/Car.jpeg" alt="Distance-Based Smart Car Project | Embedded Systems" class="project-img">
+          <h3><a href="#" target="_blank">Distance-Based Smart Car Project</a></h3>
+          <p>Smart car uses a distance sensor to detect obstacles and make automatic decisions.</p>
+          <p><strong>Skills:</strong> Embedded Systems, Sensors, Arduino, Logic Programming, Logic Design</p>
+        </div>
       </div>
-
-      <!-- Online Institute Website -->
-      <div class="project-card">
-        <img src="onlineInstitute.png" alt="Online Institute Website" class="project-img">
-        <h3><a href="#" target="_blank">Online Institute Website</a></h3>
-        <p>Website for online course enrollment, lectures, downloadable notes, attendance tracker, and assessment sheets.</p>
-        <p><strong>Skills:</strong> Web Development, Responsive Design, Database Management, Embedded Systems</p>
-      </div>
-
     </div>
-
-    <!-- Hardware / Embedded Projects -->
-    <h3 style="color:#022049; margin-top:3rem;">🔧 Hardware & Embedded Projects</h3>
-    <div class="projects-grid">
-
-      <!-- Home Automation System -->
-      <div class="project-card">
-        <img src="homeAutomation.png" alt="Home Automation System" class="project-img">
-        <h3><a href="#" target="_blank">Home Automation System</a></h3>
-        <p>Control lights, fans, and appliances using IoT and web/mobile interfaces.</p>
-        <p><strong>Skills:</strong> Arduino, ESP32, IoT, Home Automation</p>
-      </div>
-
-      <!-- ESP32 Weather Tracker -->
-      <div class="project-card">
-        <img src="withArdiunoPic.jpeg" alt="ESP32 Weather Tracker" class="project-img">
-        <h3><a href="#" target="_blank">ESP32 Weather Tracker</a></h3>
-        <p>ESP32 reads temperature and humidity from DHT11 and sends the data to mobile via Bluetooth.</p>
-        <p><strong>Skills:</strong> ESP32, MIT app, Mobile Applications, Sensors, Arduino IDE, Home Automation</p>
-      </div>
-
-      <!-- Distance-Based Smart Car Project -->
-      <div class="project-card">
-        <img src="Car.jpeg" alt="Distance-Based Smart Car Project | Embedded Systems" class="project-img">
-        <h3><a href="#" target="_blank">Distance-Based Smart Car Project | Embedded Systems</a></h3>
-        <p>Smart car uses a distance sensor to detect obstacles and make automatic decisions.</p>
-        <p><strong>Skills:</strong> Embedded Systems, Sensors, Arduino, Logic Programming, Logic Design</p>
-      </div>
-
-
-    </div>
-  </div>
+  </section>
 
   <!-- Contact Section -->
- <section id="contact" style="background:#022049; color:#ffffff; padding:4rem 0;">
-  <div class="container">
-    <h2 style="text-align:center; color:#ffae13; margin-bottom:3rem;">📬 Contact Me</h2>
-    <div class="contact-grid">
-
-      <!-- Email -->
-      <div class="contact-card">
-        <div class="contact-icon">📧</div>
-        <h3>Email</h3>
-        <p><a href="mailto:najwa@email.com" style="color:#ffffff; text-decoration:none;">najwa@email.com</a></p>
+  <section id="contact" style="background:#f9f9f9; color:#022049; padding:6rem 0;">
+    <div class="container">
+      <h2 style="text-align:center; color:#ffae13; margin-bottom:3rem;">📬 Contact Me</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p><a href="mailto:najwashahbaz642@gmail.com" style="color:#022049;">najwashahbaz642@gmail.com</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">💼</div>
+          <h3>LinkedIn</h3>
+          <p><a href="https://www.linkedin.com/in/najwa-shahbaz-8704b1214/" target="_blank" style="color:#022049;">Najwa Shahbaz</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Phone</h3>
+          <p><a href="tel:+923010919087" style="color:#022049;">03010919087</a></p>
+        </div>
       </div>
-
-      <!-- LinkedIn -->
-      <div class="contact-card">
-        <div class="contact-icon">💼</div>
-        <h3>LinkedIn</h3>
-        <p><a href="https://www.linkedin.com/in/NajwaShahbaz" target="_blank" style="color:#ffffff; text-decoration:none;">NajwaShahbaz</a></p>
-      </div>
-
-      <!-- GitHub -->
-      <div class="contact-card">
-        <div class="contact-icon">🐙</div>
-        <h3>GitHub</h3>
-        <p><a href="https://github.com/NajwaShahbaz" target="_blank" style="color:#ffffff; text-decoration:none;">NajwaShahbaz</a></p>
-      </div>
-
-      <!-- Phone -->
-      <div class="contact-card">
-        <div class="contact-icon">📞</div>
-        <h3>Phone</h3>
-        <p><a href="tel:+923000000000" style="color:#ffffff; text-decoration:none;">+92-300-0000000</a></p>
-      </div>
-
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 Najwa Shahbaz. All rights reserved.</p>
   </footer>
 
-  <!-- Internal JS -->
-  <script>
-    // Scroll animation for sections
-    document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll("section");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.1 });
-
-      sections.forEach(section => {
-        section.classList.add("hidden");
-        observer.observe(section);
-      });
-    });
-  </script>
 </body>
 </html>
