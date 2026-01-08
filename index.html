@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Najwa Shahbaz | Portfolio</title>
+  
   <style>
     /* Reset / Base */
     * {
@@ -19,7 +21,9 @@
       background-color: #ffffff;
     }
 
-    a { text-decoration: none; }
+    a {
+      text-decoration: none;
+    }
 
     /* Container */
     .container {
@@ -29,66 +33,86 @@
     }
 
     /* Hero / Header */
-    .hero {
-      background:#022049;
-      color:#ffffff;
-      padding:8rem 0;
-    }
+    /* Hero / Header */
+.hero {
+  background: #022049;
+  color: #ffffff;
+  padding: 0; /* reduced from 8rem */
+  overflow: hidden;
+}
 
-    .hero-grid {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap:2rem;
-    }
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 
-    .hero-text h1 {
-      font-size:3rem;
-      color: #ffae13;
-      margin-bottom: 1rem;
-    }
+.hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 0px;
+}
 
-    .hero-text p {
-      font-size:1.3rem;
-      max-width:600px;
-      margin-bottom: 1.5rem;
-    }
+/* Animate hero text */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: #ffae13;
-      color: #022049;
-      font-weight: bold;
-      border-radius: 50px;
-      transition:0.3s;
-    }
+.hero-text {
+  animation: slideIn 1s ease-out forwards;
+}
 
-    .btn:hover {
-      background-color:#ffffff;
-      color:#022049;
-      border:2px solid #ffae13;
-    }
+.hero-text h1 {
+  font-size: 2.5rem; /* reduced from 3rem */
+  color: #ffae13;
+  margin-bottom: 0.8rem;
+}
 
-    .hero-image .profile-pic {
-      width:250px;
-      height:250px;
-      object-fit: cover;
-      border-radius: 50%;
-      border:4px solid #ffae13;
-    }
+.hero-text p {
+  font-size: 1.1rem; /* reduced from 1.3rem */
+  max-width: 500px; /* slightly smaller */
+  margin-bottom: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem; /* smaller button */
+  background-color: #ffae13;
+  color: #022049;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.hero-image .profile-pic {
+  width: 200px; /* smaller size */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ffae13;
+  animation: slideIn 1s ease-out forwards; /* same slide-in animation */
+}
+
 
     /* About Section */
     section {
-      padding:4rem 0;
+      padding: 4rem 0;
     }
 
     h2 {
-      text-align:center;
-      margin-bottom:2rem;
-      font-size:2rem;
-      color:#022049;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #022049;
     }
 
     ul {
@@ -99,225 +123,327 @@
 
     /* Skills Section */
     .skills-grid {
-  display: flex;        /* use flex layout */
-  flex-direction: row;  /* row by default */
-  gap: 2rem;            /* space between cards */
-  flex-wrap: wrap;      /* wrap to next line if screen is too small */
-}
-
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
 
     .skills-card {
-      background:#f0f4f8;
-      padding:2rem;
-      border-radius:10px;
-      box-shadow: 0 5px 15px rgba(2,32,73,0.1);
-      transition:0.3s;
-      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(2, 32, 73, 0.1);
+      border-left: 5px solid #ffae13;
+      padding: 1.5rem;
+      border-radius: 10px;
+      flex: 1 1 400px;
+      max-width: 600px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: 0.3s;
+      overflow: hidden;
     }
 
     .skills-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(2,32,73,0.2);
-    }
-
-    @media (max-width: 768px){
-      .skills-row {
-        flex-direction: column;
-        gap:2rem;
-      }
+      box-shadow: 0 12px 25px rgba(2, 32, 73, 0.2);
     }
 
     .skills-card h3 {
-      margin-bottom:1rem;
-      color:#022049;
+      margin-bottom: 1rem;
+      color: #022049;
     }
 
     .skills-card ul {
-      list-style:none;
-      padding:0;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      overflow-y: auto;
+      margin-top: 0.5rem;
     }
 
     .skills-card ul li {
-      background:#ffae13;
-      color:#022049;
-      margin:0.3rem 0;
-      padding:0.4rem 0.8rem;
-      border-radius:5px;
-      display:inline-block;
-      font-weight:bold;
+      background: #ffae13;
+      color: #022049;
+      padding: 0.35rem 0.7rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .skills-row {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-image .profile-pic {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 1.5rem;
+      }
     }
 
     /* Projects Section */
     .projects-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      
     }
 
     .project-card {
-      border:2px solid #022049;
-      border-radius:10px;
-      padding:1rem;
-      background:#ffffff;
-      transition:0.3s;
+      border: 2px solid #022049;
+      border-radius: 10px;
+      padding: 1rem;
+      background: #ffffff;
+      transition: 0.3s;
     }
 
     .project-card img.project-img {
-      width:100%;
-      height:180px;
-      object-fit:cover;
-      border-radius:8px;
-      margin-bottom:1rem;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .project-card img.project-img.full {
+      object-fit: contain;
+      background-color: #f9f9f9;
     }
 
     .project-card h3 a {
-      color:#ffae13;
+      color: #ffae13;
     }
 
-    .project-card h3 a:hover { text-decoration:underline; }
+    .project-card h3 a:hover {
+      text-decoration: underline;
+    }
 
     .project-card:hover {
-      transform:translateY(-5px);
-      box-shadow:0 5px 15px rgba(2,32,73,0.3);
-      border-color:#ffae13;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(2, 32, 73, 0.3);
+      border-color: #ffae13;
     }
 
     /* Contact Section */
     .contact-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:2rem;
-      max-width:900px;
-      margin:auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: auto;
     }
 
     .contact-card {
-      background:#ffffff;
-      color:#022049;
-      border-radius:10px;
-      padding:2rem 1rem;
-      text-align:center;
-      box-shadow: 0 5px 15px rgba(2,32,73,0.2);
-      transition:0.3s;
+      background: #ffffff;
+      color: #022049;
+      border-radius: 10px;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(2, 32, 73, 0.2);
+      transition: 0.3s;
     }
 
     .contact-card:hover {
-      transform:translateY(-5px);
-      box-shadow:0 10px 20px rgba(2,32,73,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(2, 32, 73, 0.4);
     }
 
-    .contact-icon { font-size:2.5rem; margin-bottom:1rem; color:#ffae13; }
-    .contact-card h3 { margin-bottom:0.5rem; font-size:1.2rem; color:#022049; }
-    .contact-card p { margin:0; font-size:1rem; }
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffae13;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: #022049;
+    }
+
+    .contact-card p {
+      margin: 0;
+      font-size: 1rem;
+    }
 
     /* Footer */
     footer {
-      text-align:center;
-      padding:3rem 1rem;
-      background:#022049;
-      color:#ffffff;
-      font-size:0.9rem;
-      margin-top:3rem;
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #022049;
+      color: #ffffff;
+      font-size: 0.9rem;
+      margin-top: 3rem;
     }
 
-    /* Responsive */
-    @media(max-width:768px){
-      .hero-grid { flex-direction:column-reverse; text-align:center; }
-      .hero-image .profile-pic { width:200px; height:200px; margin-bottom:1.5rem; }
-    }
+    .contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(2,32,73,0.15);
+  }
   </style>
 </head>
+
 <body>
 
-  <!-- Header / Hero -->
-  <header class="hero">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <h1>Hi, I'm Najwa Shahbaz</h1>
-        <p>Web Developer | Home Automation & IoT Developer | Helping Businesses Grow Digitally & Smartly</p>
-        <a href="#projects" class="btn">See My Work</a>
-      </div>
-      <div class="hero-image">
-        <img src="./images/najwaBGR.png" alt="Najwa Shahbaz" class="profile-pic">
-      </div>
-    </div>
-  </header>
-
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I am a BSCS graduate with a strong interest in Embedded Systems and Web Development. Currently, I am working as an Embedded System Engineer and have hands-on experience with IoT projects, home automation, healthcare monitoring systems, and full-stack web development.</p>
-      <ul>
-        <li>Embedded Systems Engineer Intern at Zyp Tech</li>
-        <li>Experience with Arduino, ESP32, IoT sensors</li>
-        <li>Web Development: HTML, CSS, JavaScript, React, Node.js, PHP & MySQL</li>
-        <li>Home Automation & Smart Solutions Development</li>
+    <!-- Navigation / Navbar -->
+  <nav style="position: sticky; top:0; background:#022049; padding:1rem 0; z-index:1000;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <a href="#" style="color:#ffae13; font-weight:bold; font-size:1.2rem;">Najwa Shahbaz</a>
+      <ul style="list-style:none; display:flex; gap:2rem; margin:0;">
+        <li><a href="#about" style="color:#ffffff; transition:0.3s;">About</a></li>
+        <li><a href="#skills" style="color:#ffffff; transition:0.3s;">Skills</a></li>
+        <li><a href="#projects" style="color:#ffffff; transition:0.3s;">Projects</a></li>
+        <li><a href="#contact" style="color:#ffffff; transition:0.3s;">Contact</a></li>
       </ul>
     </div>
-  </section>
+  </nav>
+  <!-- Header / Hero -->
+  <header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1 id="animated-text">Hi, I'm Najwa Shahbaz</h1>
+      <p id="animated-text">Web Developer | Home Automation & IoT Developer | Helping Businesses Grow Digitally & Smartly</p>
+      <a href="#projects" class="btn">See My Work</a>
+    </div>
+    <div class="hero-image">
+      <img src="./images/najwaBGR.png" alt="Najwa Shahbaz" class="profile-pic">
+    </div>
+  </div>
+</header>
+
+  <!-- About Section -->
+<section id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>
+      I am a <strong>BSCS graduate</strong> with a passion for <strong>Embedded Systems</strong> and <strong>Web Development</strong>. 
+      Currently working as an <strong>Embedded System Engineer</strong>, I have hands-on experience with <strong>IoT projects</strong>, 
+      <strong>home automation</strong>, <strong>healthcare monitoring systems</strong>, and <strong>full-stack web development</strong>. 
+      I am constantly <strong>learning</strong>, <strong>researching</strong>, and <strong>exploring new technologies</strong> to create 
+      innovative solutions. As a <strong>freelancer</strong>, I aim to deliver <strong>high-quality projects</strong> every day while 
+      expanding my expertise and embracing new challenges.
+    </p>
+  </div>
+</section>
+
+
+
 
   <!-- Skills Section -->
 <!-- Skills Section -->
 <section id="skills" style="background:#f9f9f9; padding:6rem 0;">
   <div class="container">
     <h2 style="color:#022049; margin-bottom:3rem;">💡 My Skills</h2>
-    
+
     <div class="skills-grid">
+
       <!-- Embedded & IoT -->
-      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
-        <h3 style="margin-bottom:1rem; color:#022049;">🔧 Embedded & IoT</h3>
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🔧 Embedded Systems & IoT</h3>
         <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">ESP32</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Arduino</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">IoT Sensors</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Home Automation</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Distance-Based Smart Car</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">MIT App</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Mobile Applications</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">ESP32</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Arduino</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">IoT Sensors</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Home Automation</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Smart Car (Obstacle / Distance Based)</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">MIT App Inventor</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Real-Time Hardware Projects</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Soldering</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Motors & Drivers</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Proteus</li>
         </ul>
       </div>
 
-      <!-- Programming & Software -->
-      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
-        <h3 style="margin-bottom:1rem; color:#022049;">💻 Programming & Software</h3>
+      <!-- Programming -->
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">💻 Programming</h3>
         <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">C</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">C++</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Java</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Python</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">AI & ML</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Computer Vision</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">DSA</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">C</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">C++</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Java</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Python</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">PHP</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">JavaScript</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">DSA</li>
         </ul>
       </div>
 
-      <!-- Web & Design -->
-      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
-        <h3 style="margin-bottom:1rem; color:#022049;">🌐 Web & Design</h3>
+      <!-- Web Development -->
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🌐 Web Development</h3>
         <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">HTML / CSS / JS</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">React / Node.js</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">PHP / MySQL</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">WordPress</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Responsive Design</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Graphic Design</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">HTML5</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">CSS3</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">JavaScript</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">React.js</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Node.js</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Flask</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">WordPress</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Blogger</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Responsive Web Design</li>
         </ul>
       </div>
 
-      <!-- Professional & Personal -->
-      <div class="skills-card" style="background:#ffffff; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffae13; padding:2rem; border-radius:10px; transition:0.3s;">
-        <h3 style="margin-bottom:1rem; color:#022049;">🌟 Professional & Personal</h3>
+      <!-- Databases & Tools -->
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🗄️ Databases & Tools</h3>
         <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Project Management</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Teamwork & Leadership</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Time Management</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Self-learning</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Public Speaking</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Workshop Instruction</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Microsoft Office</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Image Editing</li>
-          <li style="background:#ffae13; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Social Media</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">MySQL</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">MongoDB</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Firebase</li>
+        </ul>
+      </div>
+
+      <!-- AI & Machine Learning -->
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🤖 AI & Machine Learning</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Machine Learning</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Computer Vision</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">YOLO Model</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Python for AI</li>
+        </ul>
+      </div>
+
+      <!-- Graphics & Media -->
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🎨 Graphics & Media</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">CorelDRAW</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Adobe Illustrator</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Adobe Photoshop</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Canva</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Video Editing</li>
+        </ul>
+      </div>
+
+      <!-- Professional Skills -->
+      <div class="skills-card"
+        style="background-color: #02204967; box-shadow:0 8px 20px rgba(2,32,73,0.1); border-left:5px solid #ffffff; padding:2rem; border-radius:10px;">
+        <h3 style="margin-bottom:1rem; color:#022049;">🌟 Professional Skills</h3>
+        <ul style="display:flex; flex-wrap:wrap; gap:0.5rem; list-style:none; padding:0;">
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Project Management</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Team Leadership</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Time Management</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Public Speaking</li>
+          <li style="background:#ffffff; color:#022049; padding:0.4rem 0.8rem; border-radius:5px;">Workshop Training</li>
         </ul>
       </div>
 
@@ -326,31 +452,111 @@
 </section>
 
 
+
   <!-- Projects Section -->
-  <section id="projects">
+  <section id="projects" style="background-color: #02204967;">
     <div class="container">
       <h2>💻 Projects</h2>
 
       <h3 style="color:#022049; margin-top:2rem;">🌐 Web Projects</h3>
       <div class="projects-grid">
+
         <div class="project-card">
-          <img src="/images/website.PNG" alt="E-Commerce Website – Tijori Finds" class="project-img">
-          <h3><a href="https://tijorifinds.pk/" target="_blank">E-Commerce Website – Tijori Finds</a></h3>
-          <p>Full-stack online store with PHP, MySQL backend, responsive frontend.</p>
-          <p><strong>Duration:</strong> Jun 2025 - Jul 2025</p>
-          <p><strong>Skills:</strong> Web Development, PHP, MySQL, HTML, CSS, JavaScript</p>
+          <img src="/images/website.PNG" alt="E-Commerce Website – Tijori Finds | WordPress WooCommerce"
+            class="project-img">
+          <h3>
+            <a href="https://tijorifinds.pk/" target="_blank">
+              E-Commerce Website – Tijori Finds
+            </a>
+          </h3>
+          <p>
+            Developed a live e-commerce website using WordPress with WooCommerce.
+            The site was customized using Elementor, plugins, and the WordPress text editor,
+            providing a fully responsive and user-friendly shopping experience.
+          </p>
+          <p><strong>Status:</strong> Live Website</p>
+          <p><strong>Domain & Hosting:</strong> Namecheap</p>
+          <p>
+            <strong>Skills:</strong> WordPress Development, WooCommerce, Elementor,
+            Plugin Customization, Responsive Design, Live Hosting
+          </p>
+        </div>
+
+        <div class="project-card">
+          <img src="/images/restorent.PNG" alt="Restaurant Management System for Client | Web Development"
+            class="project-img">
+          <h3><a href="https://go.screenpal.com/watch/cOVjignr0JZ" target="_blank">Restaurant Management System (Client Project)</a></h3>
+          <p>
+            Developed a customized Restaurant Management System for a client using HTML, CSS, JavaScript, PHP, and
+            MySQL.
+            The system was deployed on a local server using XAMPP to handle menu management, order processing, and basic
+            reporting.
+          </p>
+          <p><strong>Deployment:</strong> Localhost (XAMPP)</p>
+          <p><strong>Skills:</strong> Client-Based Development, PHP, MySQL, HTML, CSS, JavaScript, Database Management
+          </p>
         </div>
         <div class="project-card">
-          <img src="last.png" alt="Computer & Tech Courses – Bahira Town Phase 3" class="project-img">
-          <h3><a href="#" target="_blank">Computer & Tech Courses – Bahira Town Phase 3</a></h3>
+          <img src="/images/AutoLux.PNG" alt="Autolux Car Rental System | Client Web Application" class="project-img">
+          <h3><a href="https://go.screenpal.com/watch/cOVjignr0Ju" target="_blank">Autolux Car Rental System (Client Project)</a></h3>
+          <p>
+            Designed and developed a web-based Car Rental Management System for a client using HTML, CSS, JavaScript,
+            PHP, and MySQL.
+            The system was built on a local server using XAMPP to manage car listings, bookings, and customer records.
+          </p>
+          <p><strong>Deployment:</strong> Localhost (XAMPP)</p>
+          <p><strong>Skills:</strong> Client-Based Web Development, PHP, MySQL, HTML, CSS, JavaScript, Database Design
+          </p>
+        </div>
+        <div class="project-card">
+          <img src="/images/feedback.PNG" alt="Student & Faculty Feedback Management System" class="project-img">
+          <h3><a href="#" target="_blank">Student & Faculty Feedback Management System</a></h3>
+          <p>
+  Developed a web application to manage student feedback, teacher evaluations, and course registrations.
+  Students can submit feedback, teachers can track progress, and admins can manage data via a central dashboard.
+</p>
+<p>
+  The system integrates MySQL for real-time data, supports user authentication, dynamic course-teacher assignments,
+  and automatically generates CSV reports for analysis.
+</p>
+
+          <p>
+            <strong>Skills:</strong> Python, Flask, MySQL, PyMySQL, HTML, CSS, Bootstrap, CRUD Operations, Form
+            Validation, CSV Report Generation, Role-Based Access, Web Development
+          </p>
+        </div>
+
+        <div class="project-card">
+          <img src="/images/drone.PNG" alt="CropCare Drone Project | AI & IoT in Agriculture" class="project-img">
+          <h3><a href="https://go.screenpal.com/watch/cOVjignr0J0" target="_blank">CropCare Drone – AI & IoT Based Wheat Monitoring</a></h3>
+          <p>
+  Developed CropCare Robot, an intelligent drone system for monitoring wheat fields. Using ESP32-CAM and YOLOv9 AI,
+  it captures real-time images and automatically detects diseased plants.
+</p>
+<p>
+  Unlike traditional drones, users can define field areas via an app, allowing autonomous surveying, saving time, manpower, and reducing errors.
+</p>
+
+          <p>
+            <strong>Skills:</strong> Arduino, ESP32-CAM, Drone Development, IoT, YOLOv9 AI Model, Real-Time Image
+            Processing, Automation, Agriculture Technology
+          </p>
+        </div>
+
+
+        <div class="project-card">
+          <img src="/images/main2.png" alt="Computer & Tech Courses – Bahira Town Phase 3" class="project-img">
+          <h3><a href="https://najwahelpdesk.blogspot.com/" target="_blank">Computer & Tech Courses – Bahira Town Phase 3</a></h3>
           <p>Hands-on computer and tech courses for kids and professionals in Bahira Town Phase 3.</p>
           <p><strong>Duration:</strong> Dec 2025 - Present</p>
-          <p><strong>Skills:</strong> Microsoft Office, C++, Java, Python, Arduino, Web Development, Graphic Design, SQL</p>
+          <p><strong>Skills:</strong> Microsoft Office, C++, Java, Python, Arduino, Web Development, Graphic Design, SQL
+          </p>
         </div>
         <div class="project-card">
           <img src="/images/NHD.PNG" alt="Online Institute Website" class="project-img">
-          <h3><a href="#" target="_blank">Online Institute Website</a></h3>
-          <p>Website for online course enrollment, lectures, downloadable notes, attendance tracker, and assessment sheets.</p>
+          <h3><a href="https://najwahelpdesk.blogspot.com/" target="_blank">Online Institute Website</a></h3>
+          <p>Website for online course enrollment, lectures, downloadable notes, attendance tracker, and assessment
+            sheets.</p>
           <p><strong>Skills:</strong> Web Development, Responsive Design, Database Management, Embedded Systems</p>
         </div>
       </div>
@@ -358,50 +564,171 @@
       <h3 style="color:#022049; margin-top:3rem;">🔧 Hardware & Embedded Projects</h3>
       <div class="projects-grid">
         <div class="project-card">
-          <img src="homeAutomation.png" alt="Home Automation System" class="project-img">
+          <img src="/images/homeAuto.PNG" alt="Home Automation System" class="project-img">
           <h3><a href="#" target="_blank">Home Automation System</a></h3>
           <p>Control lights, fans, and appliances using IoT and web/mobile interfaces.</p>
           <p><strong>Skills:</strong> Arduino, ESP32, IoT, Home Automation</p>
         </div>
         <div class="project-card">
           <img src="/images/appPic.jpeg" alt="ESP32 Weather Tracker" class="project-img">
-          <h3><a href="#" target="_blank">ESP32 Weather Tracker</a></h3>
+          <h3><a href="https://go.screenpal.com/watch/cOVjiEnr0dr" target="_blank">ESP32 Weather Tracker</a></h3>
           <p>ESP32 reads temperature and humidity from DHT11 and sends the data to mobile via Bluetooth.</p>
           <p><strong>Skills:</strong> ESP32, MIT app, Mobile Applications, Sensors, Arduino IDE, Home Automation</p>
         </div>
         <div class="project-card">
           <img src="/images/Car.jpeg" alt="Distance-Based Smart Car Project | Embedded Systems" class="project-img">
-          <h3><a href="#" target="_blank">Distance-Based Smart Car Project</a></h3>
+          <h3><a href="https://go.screenpal.com/watch/cOVjiEnr0dY" target="_blank">Distance-Based Smart Car Project</a></h3>
           <p>Smart car uses a distance sensor to detect obstacles and make automatic decisions.</p>
           <p><strong>Skills:</strong> Embedded Systems, Sensors, Arduino, Logic Programming, Logic Design</p>
         </div>
+        <div class="project-card">
+          <img src="/images/distancebaseLight.PNG" alt="Light Control Using LDR | Embedded Systems Project"
+            class="project-img">
+          <h3><a href="https://go.screenpal.com/watch/cOVjiknr0Jy" target="_blank">Light Control Using LDR</a></h3>
+          <p>
+            This project automatically controls light intensity based on ambient light levels using an LDR sensor.
+            The system turns lights ON in low-light conditions and OFF in bright environments.
+          </p>
+          <p>
+            <strong>Skills:</strong> Embedded Systems, LDR Sensor, Arduino, Circuit Design, Logic Building, Automation
+          </p>
+        </div>
+        <div class="project-card">
+          <img src="/images/rocket.PNG" alt="Arduino Based Rocket Project | Embedded Systems" class="project-img">
+          <h3><a href="https://go.screenpal.com/watch/cOVjiknr0Jx" target="_blank">Arduino-Based Rocket Project</a></h3>
+          <p>
+            This project was developed with my juniors, where a small rocket system was designed and controlled using
+            Arduino.
+            A heating element was used to generate heat for ignition, demonstrating basic propulsion and control
+            concepts.
+          </p>
+          <p>
+            <strong>Skills:</strong> Embedded Systems, Arduino, Heating Element, Circuit Design, Team Collaboration,
+            Practical Electronics
+          </p>
+        </div>
+      </div>
+
+      <h3 style="color:#022049; margin-top:3rem;">🔧Graphic Projects</h3>
+      <div class="projects-grid">
+        <!-- Travel Company Logo -->
+        <div class="project-card">
+          <img src="/images/travelCompany.PNG" alt="Travel Company Logo Design | CorelDRAW" class="project-img" style="object-fit:contain">
+          <h3><a href="#" target="_blank">Travel Company Logo Design</a></h3>
+          <p>
+            Designed a professional logo for a travel company using CorelDRAW,
+            focusing on brand identity, color balance, and visual clarity.
+          </p>
+          <p>
+            <strong>Skills:</strong> CorelDRAW, Logo Design, Branding, Creative Design
+          </p>
+        </div>
+
+        <!-- Travel & Tours Company Logo -->
+        <div class="project-card">
+          <img src="/images/tourCompany.PNG" alt="Travel & Tours Logo Design | CorelDRAW" class="project-img" style="object-fit:contain">
+          <h3><a href="#" target="_blank">Travel & Tours Company Logo</a></h3>
+          <p>
+            Created a custom logo for a Travel & Tours company using CorelDRAW,
+            designed to reflect tourism, professionalism, and customer trust.
+          </p>
+          <p>
+            <strong>Skills:</strong> CorelDRAW, Graphic Design, Logo Concepts, Visual Branding
+          </p>
+        </div>
+
+        <!-- Quaid-e-Azam Illustration -->
+        <div class="project-card">
+          <img src="/images/25december.PNG" alt="Quaid-e-Azam Illustration | Adobe Illustrator" class="project-img">
+          <h3><a href="#" target="_blank">Quaid-e-Azam Illustration (25th December)</a></h3>
+          <p>
+            Designed a special illustration of Quaid-e-Azam Muhammad Ali Jinnah on 25th December
+            using Adobe Illustrator to honor Pakistan’s founder.
+          </p>
+          <p>
+            <strong>Skills:</strong> Adobe Illustrator, Vector Art, Illustration, National Art Design
+          </p>
+        </div>
+
+        <!-- Office Interior Design -->
+        <div class="project-card">
+          <img src="/images/office.PNG" alt="Office Design Project | Graphic Design" class="project-img">
+          <h3><a href="#" target="_blank">Office Design Project</a></h3>
+          <p>
+            Designed a visual office layout for the workplace where I worked,
+            focusing on workspace organization, professional aesthetics, and usability.
+          </p>
+          <p>
+            <strong>Skills:</strong> Graphic Design, Layout Design, Visual Planning, Creative Tools
+          </p>
+        </div>
+
+      </div>
+
+      <h3 style="color:#022049; margin-top:3rem;">🔧Other Projects</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="/images/tictactoe.PNG" alt="Tic Tac Toe Game in Microsoft Excel" class="project-img">
+          <h3><a href="https://go.screenpal.com/watch/cOVjiknr0Jw" target="_blank">Tic Tac Toe Game (Excel-Based)</a></h3>
+          <p>
+            Developed a Tic Tac Toe game using Microsoft Excel by applying formulas and logical functions.
+            The game automatically detects player moves, checks win conditions, and updates results without any external
+            code.
+          </p>
+          <p>
+            <strong>Skills:</strong> Microsoft Excel, Logical Formulas, IF Conditions, Game Logic, Problem Solving
+          </p>
+        </div>
+        <div class="project-card">
+    <img src="/images/calculator.PNG" alt="React Native Calculator App" class="project-img">
+    <h3><a href="#" target="_blank">Calculator App (React Native)</a></h3>
+    <p>
+      Developed a fully functional Calculator mobile app using React Native. The app supports basic arithmetic operations,
+      live result display, and a clean interactive interface for Android and iOS devices.
+    </p>
+    <p>
+      <strong>Skills:</strong> React Native, JavaScript, Mobile App Development, UI/UX Design, Problem Solving
+    </p>
+  </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" style="background:#f9f9f9; color:#022049; padding:6rem 0;">
-    <div class="container">
-      <h2 style="text-align:center; color:#ffae13; margin-bottom:3rem;">📬 Contact Me</h2>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>Email</h3>
-          <p><a href="mailto:najwashahbaz642@gmail.com" style="color:#022049;">najwashahbaz642@gmail.com</a></p>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">💼</div>
-          <h3>LinkedIn</h3>
-          <p><a href="https://www.linkedin.com/in/najwa-shahbaz-8704b1214/" target="_blank" style="color:#022049;">Najwa Shahbaz</a></p>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">📞</div>
-          <h3>Phone</h3>
-          <p><a href="tel:+923010919087" style="color:#022049;">03010919087</a></p>
-        </div>
+   <!-- Contact Section -->
+<section id="contact" style="background:#f9f9f9; color:#022049; padding:1rem 0;">
+  <div class="container" style="max-width:800px; margin:0 auto; text-align:center;">
+    <h2 style="color:#022049; margin-bottom:1rem; font-size:2rem;">Contact Me</h2>
+
+    <div class="contact-grid" style="display:flex; flex-direction:column; gap:2rem;">
+
+      <!-- Email -->
+      <div class="contact-card" 
+           style="background:#ffffff; padding:1rem 1rem; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom:0.5rem; font-size:1.2rem;">Email</h3>
+        <p><a href="mailto:najwashahbaz642@gmail.com" style="color:#022049; text-decoration:none;">najwashahbaz642@gmail.com</a></p>
       </div>
+
+      <!-- LinkedIn -->
+      <div class="contact-card" 
+           style="background:#ffffff; padding:1rem 1rem; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom:0.5rem; font-size:1.2rem;">LinkedIn</h3>
+        <p><a href="https://www.linkedin.com/in/najwa-shahbaz-8704b1214/" target="_blank" style="color:#022049; text-decoration:none;">Najwa Shahbaz</a></p>
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-card" 
+           style="background:#ffffff; padding:1rem 1rem; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom:0.5rem; font-size:1.2rem;">Phone</h3>
+        <p><a href="tel:+923010919087" style="color:#022049; text-decoration:none;">03010919087</a></p>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
@@ -409,4 +736,20 @@
   </footer>
 
 </body>
+<script>
+  // Animate heading word by word
+  const heading = document.getElementById("animated-text");
+  const text = heading.innerText;
+  heading.innerText = "";
+
+  text.split(" ").forEach((word, index) => {
+    const span = document.createElement("span");
+    span.innerText = word + " ";
+    span.style.opacity = "0";
+    span.style.display = "inline-block";
+    span.style.animation = `fadeIn 0.5s forwards`;
+    span.style.animationDelay = `${index * 0.4}s`;
+    heading.appendChild(span);
+  });
+</script>
 </html>
